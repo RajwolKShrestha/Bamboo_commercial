@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bamboo Nepal - Sustainable Bamboo Products</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Quick Access Toolbar -->
+    <nav class="quick-toolbar">
+        <div class="toolbar-container">
+            <div class="logo">
+                <i class="fas fa-leaf"></i>
+                <span>Bamboo Nepal</span>
+            </div>
+            <ul class="toolbar-menu">
+                <li><a href="#home" class="active"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="#production"><i class="fas fa-industry"></i> Production Info</a></li>
+                <li><a href="#products"><i class="fas fa-boxes"></i> Products</a></li>
+                <li><a href="#shop"><i class="fas fa-shopping-cart"></i> Shop</a></li>
+                <li><a href="#database"><i class="fas fa-database"></i> Database</a></li>
+            </ul>
+            <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Sustainable Bamboo Production</h1>
+            <p>Improving bamboo cultivation and pulp production in Nepal</p>
+            <a href="#products" class="btn-primary">Explore Products</a>
+        </div>
+    </section>
+
+    <!-- Bamboo Production Information -->
+    <section id="production" class="section production-section">
+        <div class="container">
+            <h2 class="section-title"><i class="fas fa-seedling"></i> Bamboo Production Information</h2>
+            <div class="info-cards">
+                <div class="info-card">
+                    <div class="card-icon"><i class="fas fa-tree"></i></div>
+                    <h3>Cultivation</h3>
+                    <p>Learn about sustainable bamboo cultivation techniques in Nepal's diverse climate zones.</p>
+                </div>
+                <div class="info-card">
+                    <div class="card-icon"><i class="fas fa-cogs"></i></div>
+                    <h3>Pulp Production</h3>
+                    <p>Modern techniques for bamboo pulp extraction and processing for various applications.</p>
+                </div>
+                <div class="info-card">
+                    <div class="card-icon"><i class="fas fa-recycle"></i></div>
+                    <h3>Sustainability</h3>
+                    <p>Eco-friendly practices ensuring minimal environmental impact and maximum yield.</p>
+                </div>
+            </div>
+            
+            <!-- Production Data Table -->
+            <div class="data-table-container">
+                <h3>Production Records</h3>
+                <table class="data-table" id="productionTable">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Location</th>
+                            <th>Bamboo Type</th>
+                            <th>Area (Hectares)</th>
+                            <th>Annual Yield (Tons)</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Data will be loaded dynamically -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bamboo Products Information -->
+    <section id="products" class="section products-section">
+        <div class="container">
+            <h2 class="section-title"><i class="fas fa-box-open"></i> Bamboo Products Information</h2>
+            <div class="products-grid" id="productsGrid">
+                <!-- Products will be loaded dynamically -->
+            </div>
+            
+            <!-- Products Data Table -->
+            <div class="data-table-container">
+                <h3>Product Catalog</h3>
+                <table class="data-table" id="productsTable">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Product Name</th>
+                            <th>Category</th>
+                            <th>Description</th>
+                            <th>Price (NPR)</th>
+                            <th>Stock</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Data will be loaded dynamically -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Purchasing Site -->
+    <section id="shop" class="section shop-section">
+        <div class="container">
+            <h2 class="section-title"><i class="fas fa-store"></i> Purchase Bamboo Products</h2>
+            <div class="shop-container">
+                <div class="shop-filters">
+                    <h3>Filter Products</h3>
+                    <select id="categoryFilter">
+                        <option value="">All Categories</option>
+                        <option value="furniture">Furniture</option>
+                        <option value="handicraft">Handicrafts</option>
+                        <option value="pulp">Pulp Products</option>
+                        <option value="construction">Construction</option>
+                    </select>
+                    <input type="range" id="priceRange" min="0" max="50000" value="50000">
+                    <span id="priceValue">Max: NPR 50,000</span>
+                </div>
+                <div class="shop-products" id="shopProducts">
+                    <!-- Shop products will be loaded dynamically -->
+                </div>
+            </div>
+            
+            <!-- Cart Section -->
+            <div class="cart-section">
+                <h3><i class="fas fa-shopping-basket"></i> Your Cart</h3>
+                <div id="cartItems"></div>
+                <div class="cart-total">
+                    <span>Total:</span>
+                    <span id="cartTotal">NPR 0</span>
+                </div>
+                <button class="btn-primary" onclick="checkout()">Proceed to Checkout</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Database Management Section -->
+    <section id="database" class="section database-section">
+        <div class="container">
+            <h2 class="section-title"><i class="fas fa-database"></i> Database Management</h2>
+            
+            <!-- Tab Navigation -->
+            <div class="db-tabs">
+                <button class="db-tab active" data-tab="production-db">Production Data</button>
+                <button class="db-tab" data-tab="products-db">Products Data</button>
+                <button class="db-tab" data-tab="orders-db">Orders Data</button>
+            </div>
+
+            <!-- Production Database Tab -->
+            <div class="db-content active" id="production-db">
+                <h3>Add Production Record</h3>
+                <form id="productionForm" class="db-form">
+                    <div class="form-group">
+                        <label for="prodLocation">Location</label>
+                        <input type="text" id="prodLocation" name="location" required placeholder="e.g., Chitwan">
+                    </div>
+                    <div class="form-group">
+                        <label for="prodBambooType">Bamboo Type</label>
+                        <select id="prodBambooType" name="bambooType" required>
+                            <option value="">Select Type</option>
+                            <option value="Dendrocalamus strictus">Dendrocalamus strictus</option>
+                            <option value="Bambusa bambos">Bambusa bambos</option>
+                            <option value="Bambusa tulda">Bambusa tulda</option>
+                            <option value="Dendrocalamus hamiltonii">Dendrocalamus hamiltonii</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="prodArea">Area (Hectares)</label>
+                        <input type="number" id="prodArea" name="area" required step="0.01" placeholder="e.g., 50">
+                    </div>
+                    <div class="form-group">
+                        <label for="prodYield">Annual Yield (Tons)</label>
+                        <input type="number" id="prodYield" name="yield" required step="0.01" placeholder="e.g., 200">
+                    </div>
+                    <button type="submit" class="btn-primary"><i class="fas fa-plus"></i> Add Record</button>
+                </form>
+            </div>
+
+            <!-- Products Database Tab -->
+            <div class="db-content" id="products-db">
+                <h3>Add Product</h3>
+                <form id="productForm" class="db-form">
+                    <div class="form-group">
+                        <label for="productName">Product Name</label>
+                        <input type="text" id="productName" name="name" required placeholder="e.g., Bamboo Chair">
+                    </div>
+                    <div class="form-group">
+                        <label for="productCategory">Category</label>
+                        <select id="productCategory" name="category" required>
+                            <option value="">Select Category</option>
+                            <option value="furniture">Furniture</option>
+                            <option value="handicraft">Handicrafts</option>
+                            <option value="pulp">Pulp Products</option>
+                            <option value="construction">Construction Materials</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="productDesc">Description</label>
+                        <textarea id="productDesc" name="description" required placeholder="Product description..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="productPrice">Price (NPR)</label>
+                        <input type="number" id="productPrice" name="price" required step="0.01" placeholder="e.g., 5000">
+                    </div>
+                    <div class="form-group">
+                        <label for="productStock">Stock Quantity</label>
+                        <input type="number" id="productStock" name="stock" required placeholder="e.g., 100">
+                    </div>
+                    <div class="form-group">
+                        <label for="productImage">Image URL</label>
+                        <input type="url" id="productImage" name="image" placeholder="https://...">
+                    </div>
+                    <button type="submit" class="btn-primary"><i class="fas fa-plus"></i> Add Product</button>
+                </form>
+            </div>
+
+            <!-- Orders Database Tab -->
+            <div class="db-content" id="orders-db">
+                <h3>Recent Orders</h3>
+                <table class="data-table" id="ordersTable">
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Customer</th>
+                            <th>Products</th>
+                            <th>Total (NPR)</th>
+                            <th>Status</th>
+                            <th>Date</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Orders will be loaded dynamically -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h4><i class="fas fa-leaf"></i> Bamboo Nepal</h4>
+                    <p>Promoting sustainable bamboo production and eco-friendly products in Nepal.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#production">Production</a></li>
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="#shop">Shop</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Us</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> Kathmandu, Nepal</p>
+                    <p><i class="fas fa-phone"></i> +977-1-XXXXXXX</p>
+                    <p><i class="fas fa-envelope"></i> info@bamboonepal.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Bamboo Nepal. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal for Edit/View -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <script src="js/database.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
